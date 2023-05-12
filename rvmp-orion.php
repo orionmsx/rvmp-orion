@@ -3,7 +3,7 @@
 Plugin Name: RVMPlayer Orion
 Plugin URI: https://github.com/orionmsx/rvmp-orion/
 Description: Añade el player de RVM en tu Wordpress
-Version: 0.2
+Version: 0.4
 Author: Orion
 Author URI: https://orionmsx.com/
 License: BSD 3-Clause License
