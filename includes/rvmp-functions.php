@@ -8,9 +8,9 @@ function rvmp_sc_init(){
 		 'contenedor' => 'rvmpcont',
 		 'ancho' => '400',
 		 'huesped' => 'cpc6128',
-    	 'origen' => 'dsk',
-		 'medio' => 'disco.dsk',
-		 'programa' => 'juego',
+		 'origen' => 'dsk',
+		 'medio' => 'https://www.server.com/disco.dsk',
+		 'command' => '',
 		 'warpsegs' => '20',
 		 'pause' => 'true',
 		 'video' => 'true',
@@ -25,7 +25,7 @@ function rvmp_sc_init(){
 		$output.= '      type: \''.esc_attr( $atrib['origen'] ).'\','.PHP_EOL;
 		$output.= '      url: \''.esc_attr( $atrib['medio'] ).'\','.PHP_EOL;
 		$output.= '    },'.PHP_EOL;
-		$output.= '    command: \'run"'.esc_attr( $atrib['programa'] ).'\n\','.PHP_EOL;
+		$output.= '    command: \''.str_replace("&quot;", "\"", esc_attr($atrib['command'])).'\\n\','.PHP_EOL;
 		$output.= '    pause: '.esc_attr( $atrib['pause'] ).','.PHP_EOL;
 		$output.= '    video: '.esc_attr( $atrib['video'] ).','.PHP_EOL;
 		$output.= '    videoMode: \''.esc_attr( $atrib['videomode'] ).'\','.PHP_EOL;
@@ -51,8 +51,8 @@ function rvmp_sc_init(){
         $extensiones = array("dsk","hfe");
 
         if (('application/octet-stream' === $post->post_mime_type) && (in_array($extension, $extensiones))) {
-        	$output = "[rvmp_orion contenedor=\"nombrecontenedor\" ancho=\"500\" origen=\"".$extension."\" ";
-        	$output.= "huesped=\"\" medio=\"".$attachment['url']."\" programa=\"\"]";
+        	$output = "[rvmp_orion contenedor='nombrecontenedor' ancho='500' origen='".$extension."' ";
+        	$output.= "huesped='' medio='".$attachment['url']."' command='']";
             return $output;
         }
         else {
